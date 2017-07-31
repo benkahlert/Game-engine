@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 public class Game extends Canvas implements Runnable {
 
@@ -11,17 +13,22 @@ public class Game extends Canvas implements Runnable {
     public static int height = (width / 16) * 9;
     public static int scale = 3;
 
+    // Game thread variables
+    private Thread gameThread;
+    private JFrame frame;
+    private boolean running = false;
+
+    //Image & Screen
+
+    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    private int[] pixels = ((DataBufferInt) (image.getRaster().getDataBuffer())).getData();
+
     // Initialize game
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
         this.setPreferredSize(size);
         frame = new JFrame();
     }
-
-    // Game thread variables
-    private Thread gameThread;
-    private JFrame frame;
-    private boolean running = false;
 
     // Start game thread
     public synchronized void start() {
