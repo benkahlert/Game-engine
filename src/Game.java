@@ -1,12 +1,25 @@
-public class Game implements Runnable {
+import javax.swing.*;
+import java.awt.*;
+
+public class Game extends Canvas implements Runnable {
+
+    private static final long serialVersionUID = 1L;
 
     // Screen dimensions
     public static int width = 300;
     public static int height = (width / 16) * 9;
     public static int scale = 3;
 
+    // Initialize game
+    public Game() {
+        Dimension size = new Dimension(width * scale, height * scale);
+        this.setPreferredSize(size);
+        frame = new JFrame();
+    }
+
     // Game thread variables
     private Thread gameThread;
+    private JFrame frame;
     private boolean running = false;
 
     // Start game thread
@@ -31,6 +44,19 @@ public class Game implements Runnable {
         while (running) {
 
         }
+    }
+
+    // Create game instance and configure frame
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.frame.setResizable(false);
+        game.frame.setTitle("Rain");
+        game.frame.add(game);
+        game.frame.pack();
+        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.frame.setLocationRelativeTo(null);
+        game.frame.setVisible(true);
+        game.start();
     }
 
 }
