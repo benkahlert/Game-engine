@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
@@ -42,8 +43,26 @@ public class Game extends Canvas implements Runnable {
     // Run method from Runnable interface for threads
     public void run() {
         while (running) {
-
+            update();
+            render();
         }
+    }
+
+    public void update() {
+
+    }
+
+    public void render() {
+        BufferStrategy bufferStrategy = getBufferStrategy();
+        if (bufferStrategy == null) {
+            createBufferStrategy(3);
+            return;
+        }
+        Graphics graphics = bufferStrategy.getDrawGraphics();
+        graphics.setColor(new Color(200, 80, 60));
+        graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
+        graphics.dispose();
+        bufferStrategy.show();
     }
 
     // Create game instance and configure frame
