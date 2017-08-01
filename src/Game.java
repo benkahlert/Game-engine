@@ -58,16 +58,19 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
+    // Logic tick
     public void update() {
 
     }
 
+    // Graphics tick
     public void render() {
         BufferStrategy bufferStrategy = getBufferStrategy();
         if (bufferStrategy == null) {
             createBufferStrategy(3);
             return;
         }
+        screen.clear();
         screen.render();
 
         for (int i = 0; i < pixels.length; i++) {
