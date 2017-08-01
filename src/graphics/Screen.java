@@ -6,8 +6,10 @@ public class Screen {
 
     // Pixels, tiles, and dimensions
     private int width, height;
+    public final int MAP_SIZE = 8;
+    public final int MAP_SIZE_MASK = MAP_SIZE - 1;
     public int[] pixels;
-    public int[] tiles = new int[64 * 64];
+    public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 
     private Random random = new Random();
 
@@ -24,10 +26,12 @@ public class Screen {
     // Renders the screen's pixels
     public void render() {
         for (int i = 0; i < height; i++) {
-            if (i < 0 || i >= height) { break; };
+            int iCopy = i;
+            //if (iCopy < 0 || iCopy >= height) { break; };
             for (int j = 0; j < width; j++) {
-                if (j < 0 || j >= width) { break; };
-                int tileIndex = (j >> 4) + (i >> 4) * 64;
+                int jCopy = j;
+                //if (jCopy < 0 || jCopy >= width) { break; };
+                int tileIndex = ((jCopy >> 4) & MAP_SIZE_MASK) + ((iCopy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
                 pixels[j + i * width] = tiles[tileIndex];
             }
         }
