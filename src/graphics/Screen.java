@@ -24,12 +24,12 @@ public class Screen {
     }
 
     // Renders the screen's pixels
-    public void render() {
+    public void render(int xOffset, int yOffset) {
         for (int i = 0; i < height; i++) {
-            int iCopy = i;
+            int iCopy = i + yOffset;
             //if (iCopy < 0 || iCopy >= height) { break; };
             for (int j = 0; j < width; j++) {
-                int jCopy = j;
+                int jCopy = j + xOffset;
                 //if (jCopy < 0 || jCopy >= width) { break; };
                 int tileIndex = ((jCopy >> 4) & MAP_SIZE_MASK) + ((iCopy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
                 pixels[j + i * width] = tiles[tileIndex];

@@ -15,6 +15,10 @@ public class Keyboard implements KeyListener {
         right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
+
+        for (int i = 0; i < keys.length; i++) {
+
+        }
     }
 
     public void keyTyped(KeyEvent e) {

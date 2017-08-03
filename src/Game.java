@@ -24,6 +24,10 @@ public class Game extends Canvas implements Runnable {
     //Keyboard
     private Keyboard keyboard;
 
+    // Offsets for moving the map
+    private int xOffset = 0;
+    private int yOffset = 0;
+
     //Image & Screen
     private Screen screen;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -88,6 +92,10 @@ public class Game extends Canvas implements Runnable {
     // Logic tick
     public void update() {
         keyboard.update();
+        if (keyboard.up) { yOffset--; }
+        if (keyboard.down) { yOffset++; }
+        if (keyboard.right) { xOffset++; }
+        if (keyboard.left) { xOffset--; }
     }
 
     // Graphics tick
@@ -98,7 +106,7 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         screen.clear();
-        screen.render();
+        screen.render(xOffset, yOffset);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
