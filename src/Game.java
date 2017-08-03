@@ -1,4 +1,5 @@
 import graphics.Screen;
+import input.Keyboard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,9 @@ public class Game extends Canvas implements Runnable {
     private JFrame frame;
     private boolean running = false;
 
+    //Keyboard
+    private Keyboard keyboard;
+
     //Image & Screen
     private Screen screen;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -31,6 +35,8 @@ public class Game extends Canvas implements Runnable {
         this.setPreferredSize(size);
         screen = new Screen(width, height);
         frame = new JFrame();
+        keyboard = new Keyboard();
+        addKeyListener(keyboard);
     }
 
     // Start game thread
@@ -81,7 +87,7 @@ public class Game extends Canvas implements Runnable {
 
     // Logic tick
     public void update() {
-
+        keyboard.update();
     }
 
     // Graphics tick
