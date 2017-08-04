@@ -6,10 +6,12 @@ import java.io.IOException;
 
 public class Spritesheet {
 
+    // URL and dimensions
     private String path;
-    private final int SIZE;
+    public final int SIZE;
     public int[] pixels;
 
+    // Instantiate Spritesheet
     public Spritesheet(String path, int size) {
         this.path = path;
         this.SIZE = size;
@@ -17,6 +19,7 @@ public class Spritesheet {
         loadImage();
     }
 
+    // Load image into pixels array
     public void loadImage() {
         try {
             BufferedImage image = ImageIO.read(Spritesheet.class.getResource(path));

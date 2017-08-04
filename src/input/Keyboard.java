@@ -11,10 +11,10 @@ public class Keyboard implements KeyListener {
 
     //Update keys array and private booleans
     public void update() {
-        up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
-        right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
-        down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
-        left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
+        up = keys[KeyEvent.VK_UP];
+        right = keys[KeyEvent.VK_RIGHT];
+        down = keys[KeyEvent.VK_DOWN];
+        left = keys[KeyEvent.VK_LEFT];
 
         for (int i = 0; i < keys.length; i++) {
 
