@@ -32,7 +32,8 @@ public class Screen {
                 int jCopy = j + xOffset;
                 //if (jCopy < 0 || jCopy >= width) { break; };
                 int tileIndex = ((jCopy >> 4) & MAP_SIZE_MASK) + ((iCopy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
-                pixels[j + i * width] = tiles[tileIndex];
+                // pixels[j + i * width] = tiles[tileIndex];
+                pixels[j + i * width] = Sprite.grass.pixels[(j & 15) + (i & 15) * Sprite.grass.SIZE];
             }
         }
     }

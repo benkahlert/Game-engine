@@ -3,11 +3,14 @@ package graphics;
 public class Sprite {
 
     // Size and other
-    private final int SIZE;
+    public final int SIZE;
     private int x;
     private int y;
     public int[] pixels;
     private Spritesheet spritesheet;
+
+    // Sprite
+    public static Sprite grass = new Sprite(16, 0, 0, Spritesheet.tiles);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {

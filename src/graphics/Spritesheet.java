@@ -11,6 +11,9 @@ public class Spritesheet {
     public final int SIZE;
     public int[] pixels;
 
+    // Spritesheets
+    public static Spritesheet tiles = new Spritesheet("/textures/TempSpritesheet.png", 256);
+
     // Instantiate Spritesheet
     public Spritesheet(String path, int size) {
         this.path = path;
