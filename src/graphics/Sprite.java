@@ -25,7 +25,7 @@ public class Sprite {
     private void loadImage() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                pixels[j + i * SIZE] = spritesheet.pixels[(j + this.x) + (y + this.y) * spritesheet.SIZE];
+                pixels[j + i * SIZE] = spritesheet.pixels[(j + this.x) + (i + this.y) * spritesheet.SIZE];
             }
         }
     }
