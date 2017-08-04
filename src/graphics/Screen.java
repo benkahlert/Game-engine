@@ -6,7 +6,7 @@ public class Screen {
 
     // Pixels, tiles, and dimensions
     private int width, height;
-    public final int MAP_SIZE = 8;
+    public final int MAP_SIZE = 16;
     public final int MAP_SIZE_MASK = MAP_SIZE - 1;
     public int[] pixels;
     public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
