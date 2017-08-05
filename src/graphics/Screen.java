@@ -1,5 +1,7 @@
 package graphics;
 
+import level.tile.Tile;
+
 import java.util.Random;
 
 public class Screen {
@@ -33,6 +35,13 @@ public class Screen {
                 if (jOffset < 0 || jOffset >= width) { continue; }
                 pixels[(jOffset) + (iOffset) * width] = Sprite.grass.pixels[(j & 15) + (i & 15) * Sprite.grass.SIZE];
             }
+        }
+    }
+
+    // Renders tiles
+    public void renderTile(int x, int y, Tile tile) {
+        for (int i = 0; i < tile.sprite.SIZE; i++) {
+            int yAbs = i + y;
         }
     }
 
