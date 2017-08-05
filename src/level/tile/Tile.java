@@ -10,6 +10,9 @@ public class Tile {
     public int y;
     public Sprite sprite;
 
+    // Tiles
+    public static Tile grass = new GrassTile(Sprite.grass);
+
     // Creates a tile with the given sprite
     Tile(Sprite sprite) {
         this.sprite = sprite;
