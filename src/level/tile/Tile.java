@@ -12,6 +12,7 @@ public class Tile {
 
     // Tiles
     public static Tile grass = new GrassTile(Sprite.grass);
+    public static Tile voidTile = new VoidTile(Sprite.voidSprite);
 
     // Creates a tile with the given sprite
     Tile(Sprite sprite) {

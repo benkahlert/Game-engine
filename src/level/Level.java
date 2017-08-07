@@ -51,7 +51,7 @@ public class Level {
     // Gets tile at location
     public Tile getTile(int x, int y) {
         if (tiles[x + y * width] == 0) { return Tile.grass; }
-        return null;g
+        return Tile.voidTile;
     }
 
 }

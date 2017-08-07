@@ -9,8 +9,9 @@ public class Sprite {
     public int[] pixels;
     private Spritesheet spritesheet;
 
-    // Sprite
+    // Sprites
     public static Sprite grass = new Sprite(16, 0, 0, Spritesheet.tiles);
+    public static Sprite voidSprite = new Sprite(16, 0xffffff);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {
@@ -20,6 +21,20 @@ public class Sprite {
         this.spritesheet = spritesheet;
         this.pixels = new int[SIZE * SIZE];
         loadImage();
+    }
+
+    // Instantiate void sprite
+    public Sprite(int size, int color) {
+        this.SIZE = size;
+        this.pixels = new int[SIZE * SIZE];
+        setColor(color);
+    }
+
+    // Sets color of a sprite
+    private void setColor(int color) {
+        for (int i = 0; i < pixels.length; i++) {
+            pixels[i] = color;
+        }
     }
 
     // Load the image's pixels
