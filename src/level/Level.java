@@ -40,6 +40,7 @@ public class Level {
 
     // Renders the level
     public void render(int xScroll, int yScroll, Screen screen) {
+        screen.setOffsets(xScroll, yScroll);
         int xStart = xScroll >> 4;
         int xEnd = (xScroll + screen.width) >> 4;
         int yStart = yScroll >> 4;

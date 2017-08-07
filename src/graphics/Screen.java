@@ -13,6 +13,8 @@ public class Screen {
     public final int MAP_SIZE_MASK = MAP_SIZE - 1;
     public int[] pixels;
     public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
+    public int xOffset;
+    public int yOffset;
 
     private Random random = new Random();
 
@@ -41,6 +43,8 @@ public class Screen {
 
     // Renders tiles
     public void renderTile(int x, int y, Tile tile) {
+        x -= xOffset;
+        y -= yOffset;
         for (int i = 0; i < tile.sprite.SIZE; i++) {
             int yAbs = i + y;
             for (int j = 0; j < tile.sprite.SIZE; j++) {
@@ -56,6 +60,11 @@ public class Screen {
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = 0;
         }
+    }
+
+    public void setOffsets(int xOffset, int yOffset) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
     }
 
 }
