@@ -42,9 +42,9 @@ public class Level {
     public void render(int xScroll, int yScroll, Screen screen) {
         screen.setOffsets(xScroll, yScroll);
         int xStart = xScroll >> 4;
-        int xEnd = (xScroll + screen.width) >> 4;
+        int xEnd = (xScroll + screen.width + 16) >> 4;
         int yStart = yScroll >> 4;
-        int yEnd = (yScroll + screen.height) >> 4;
+        int yEnd = (yScroll + screen.height + 16) >> 4;
 
         for (int i = yStart; i < yEnd; i++) {
             for (int  j = xStart; j < xEnd; j++) {
