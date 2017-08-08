@@ -11,7 +11,7 @@ public class Sprite {
 
     // Sprites
     public static Sprite grass = new Sprite(16, 0, 0, Spritesheet.tiles);
-    public static Sprite voidSprite = new Sprite(16, 0xffffff);
+    public static Sprite voidSprite = new Sprite(16, 0xffaaaa);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {

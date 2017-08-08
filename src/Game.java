@@ -1,5 +1,7 @@
 import graphics.Screen;
 import input.Keyboard;
+import level.Level;
+import level.RandomLevel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +12,9 @@ import java.awt.image.DataBufferInt;
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
+
+    // Level
+    private Level level;
 
     // Screen dimensions
     public static int width = 320;
@@ -40,18 +45,19 @@ public class Game extends Canvas implements Runnable {
         screen = new Screen(width, height);
         frame = new JFrame();
         keyboard = new Keyboard();
+        level = new RandomLevel(64, 64);
         addKeyListener(keyboard);
     }
 
     // Start game thread
-    public synchronized void start() {
+    private synchronized void start() {
         this.running = true;
         this.gameThread = new Thread(this, "Display");
         this.gameThread.start();
     }
 
     // Stop game thread
-    public synchronized void stop() {
+    private synchronized void stop() {
         this.running = false;
         try {
             this.gameThread.join();
@@ -91,7 +97,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     // Logic tick
-    public void update() {
+    private void update() {
         keyboard.update();
         if (keyboard.up) { yOffset--; }
         if (keyboard.down) { yOffset++; }
@@ -100,23 +106,22 @@ public class Game extends Canvas implements Runnable {
     }
 
     // Graphics tick
-    public void render() {
+    private void render() {
         BufferStrategy bufferStrategy = getBufferStrategy();
         if (bufferStrategy == null) {
             createBufferStrategy(3);
             return;
         }
+
         screen.clear();
-        screen.render(xOffset, yOffset);
+        level.render(xOffset, yOffset, screen);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
 
         Graphics graphics = bufferStrategy.getDrawGraphics();
-
         graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
         graphics.dispose();
         bufferStrategy.show();
     }

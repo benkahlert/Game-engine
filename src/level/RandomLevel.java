@@ -4,18 +4,20 @@ import java.util.Random;
 
 public class RandomLevel extends Level {
 
-    private final Random random = new Random();
+    private static final Random random = new Random();
 
     // Calls Level constructor
-    RandomLevel(int width, int height) {
+    public RandomLevel(int width, int height) {
         super(width, height);
+        generateLevel();
     }
 
     // Generates a level
     private void generateLevel() {
+        System.out.println("Generated level");
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                tiles[j + i * width] = random.nextInt(tiles.length);
+                tiles[j + i * width] = random.nextInt(4);
             }
         }
     }
