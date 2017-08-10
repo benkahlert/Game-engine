@@ -20,6 +20,11 @@ public abstract class Mob extends Entity {
 
     }
 
+    // Render mob
+    public void render() {
+
+    }
+
     // Returns if mob is colliding
     private boolean collision() {
         return false;
