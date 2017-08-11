@@ -1,3 +1,4 @@
+import entity.mob.Player;
 import graphics.Screen;
 import input.Keyboard;
 import level.Level;
@@ -13,8 +14,9 @@ public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
 
-    // Level
+    // Level & Entities
     private Level level;
+    private Player player;
 
     // Screen dimensions
     public static int width = 320;
@@ -29,10 +31,6 @@ public class Game extends Canvas implements Runnable {
     //Keyboard
     private Keyboard keyboard;
 
-    // Offsets for moving the map
-    private int xOffset = 0;
-    private int yOffset = 0;
-
     //Image & Screen
     private Screen screen;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -46,6 +44,7 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         keyboard = new Keyboard();
         level = new RandomLevel(64, 64);
+        player = new Player(keyboard);
         addKeyListener(keyboard);
     }
 
@@ -99,10 +98,7 @@ public class Game extends Canvas implements Runnable {
     // Logic tick
     private void update() {
         keyboard.update();
-        if (keyboard.up) { yOffset--; }
-        if (keyboard.down) { yOffset++; }
-        if (keyboard.right) { xOffset++; }
-        if (keyboard.left) { xOffset--; }
+        player.update();
     }
 
     // Graphics tick
@@ -114,7 +110,7 @@ public class Game extends Canvas implements Runnable {
         }
 
         screen.clear();
-        level.render(xOffset, yOffset, screen);
+        level.render(player.x, player.y, screen);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
