@@ -20,7 +20,7 @@ public class Player extends Mob {
 
     //Render player
     public void render() {
-        
+
     }
 
 }
