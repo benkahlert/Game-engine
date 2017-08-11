@@ -20,10 +20,13 @@ public class Player extends Mob {
 
     //Logic tick
     public void update() {
-        if (input.up) { y -= 1; }
-        if (input.right) { x += 1; }
-        if (input.down) { y += 1; }
-        if (input.left) { x -= 1; }
+        int xDistance = 0;
+        int yDistance = 0;
+        if (input.up) { yDistance -= 1; }
+        if (input.right) { xDistance += 1; }
+        if (input.down) { yDistance += 1; }
+        if (input.left) { xDistance -= 1; }
+        if (x != 0 || yDistance != 0) { move(xDistance, yDistance); }
     }
 
     //Render player
