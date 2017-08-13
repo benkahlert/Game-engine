@@ -13,6 +13,7 @@ public class Spritesheet {
 
     // Spritesheets
     public static Spritesheet tiles = new Spritesheet("/textures/tiles.png", 256);
+    public static Spritesheet player = new Spritesheet("/textures/player.png", 256);
 
     // Instantiate Spritesheet
     public Spritesheet(String path, int size) {

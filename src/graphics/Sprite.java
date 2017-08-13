@@ -9,9 +9,12 @@ public class Sprite {
     public int[] pixels;
     private Spritesheet spritesheet;
 
-    // Sprites
+    // Tiles
     public static Sprite grass = new Sprite(16, 0, 0, Spritesheet.tiles);
     public static Sprite voidSprite = new Sprite(16, 0xbbfff);
+
+    // Player
+    public static Sprite player = new Sprite(16, 0, 0, Spritesheet.player);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {

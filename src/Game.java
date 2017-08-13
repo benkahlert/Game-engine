@@ -80,17 +80,17 @@ public class Game extends Canvas implements Runnable {
             lastTime = now;
             while (delta >= 1) {
                 update();
-                updates++;
+//                updates++;
                 delta--;
             }
             render();
-            frames++;
-            if (System.currentTimeMillis() - timer > 1000) {
-                timer += 1000;
-                System.out.println("Updates: " + updates + ", Frames: " + frames);
-                updates = 0;
-                frames = 0;
-            }
+//            frames++;
+//            if (System.currentTimeMillis() - timer > 1000) {
+//                timer += 1000;
+//                System.out.println("Updates: " + updates + ", Frames: " + frames);
+//                updates = 0;
+//                frames = 0;
+//            }
         }
         stop();
     }
@@ -110,7 +110,10 @@ public class Game extends Canvas implements Runnable {
         }
 
         screen.clear();
-        level.render(player.x, player.y, screen);
+        int xScroll = player.x - screen.width / 2;
+        int yScroll = player.y - screen.height / 2;
+        level.render(xScroll, yScroll, screen);
+        player.render(screen);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];

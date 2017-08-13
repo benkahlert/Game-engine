@@ -14,7 +14,6 @@ public class RandomLevel extends Level {
 
     // Generates a level
     private void generateLevel() {
-        System.out.println("Generated level");
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 tiles[j + i * width] = random.nextInt(4);
