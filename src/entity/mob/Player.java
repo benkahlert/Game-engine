@@ -8,10 +8,12 @@ public class Player extends Mob {
 
     // Variables
     private Keyboard input;
+    private Sprite sprite;
 
     // Default constructor
     public Player(Keyboard input) {
         this.input = input;
+        this.sprite = Sprite.playerRight;
     }
 
     // Create at specific location
@@ -19,6 +21,7 @@ public class Player extends Mob {
         this.input = input;
         this.x = x;
         this.y = y;
+        this.sprite = Sprite.playerRight;
     }
 
     // Logic tick
@@ -34,7 +37,9 @@ public class Player extends Mob {
 
     // Render player
     public void render(Screen screen) {
-        screen.renderPlayer(x, y, Sprite.player);
+        if (direction == 1) { this.sprite = Sprite.playerRight; }
+        if (direction == 3) { this.sprite = Sprite.playerLeft; }
+        screen.renderPlayer(x, y, sprite);
     }
 
 }

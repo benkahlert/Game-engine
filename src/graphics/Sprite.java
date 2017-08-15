@@ -14,13 +14,14 @@ public class Sprite {
     public static Sprite voidSprite = new Sprite(16, 0xbbfff);
 
     // Player
-    public static Sprite player = new Sprite(10, 10, 0, Spritesheet.player);
+    public static Sprite playerRight = new Sprite(10, 1, 0, Spritesheet.player);
+    public static Sprite playerLeft = new Sprite(10, 1, 1, Spritesheet.player);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {
         this.SIZE = size;
-        this.x = x;
-        this.y = y;
+        this.x = x * size;
+        this.y = y * size;
         this.spritesheet = spritesheet;
         this.pixels = new int[SIZE * SIZE];
         loadImage();

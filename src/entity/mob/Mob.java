@@ -14,8 +14,6 @@ public abstract class Mob extends Entity {
     public void move(int xChange, int yChange) {
         if (xChange > 0) { direction = 1; }
         if (xChange < 0) { direction = 3; }
-        if (yChange > 0) { direction = 2; }
-        if (yChange < 0) { direction = 0; }
 
         if (!collision()) {
             x += xChange;
