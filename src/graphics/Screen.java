@@ -54,7 +54,8 @@ public class Screen {
                 int xAbs = j + x;
                 if (xAbs < (0 - sprite.SIZE) || xAbs >= width || yAbs < 0 || yAbs >= height) { break; }
                 if (xAbs < 0) { xAbs = 0; }
-                pixels[xAbs + yAbs * width] = sprite.pixels[j + i * sprite.SIZE];
+                int color = sprite.pixels[j + i * sprite.SIZE];
+                if (color != 0xffff0000) { pixels[xAbs + yAbs * width] = color; }
             }
         }
     }

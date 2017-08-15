@@ -14,7 +14,7 @@ public class Sprite {
     public static Sprite voidSprite = new Sprite(16, 0xbbfff);
 
     // Player
-    public static Sprite player = new Sprite(16, 0, 0, Spritesheet.player);
+    public static Sprite player = new Sprite(10, 10, 0, Spritesheet.player);
 
     // Instantiate new Sprite object
     Sprite(int size, int x, int y, Spritesheet spritesheet) {
